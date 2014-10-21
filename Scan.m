@@ -3,30 +3,30 @@ game.Colors=[0,0,0,0,0,0,0,0,0,0];
 game.key={'0', 'Empty'; '1', 'Red'; '2', 'Green'; '3', 'Yellow'; '4', 'Blue'};
 
 %Don't touch
-rrl = 100;
-rrh = 165;
-rgl = 0;
-rgh = 52;
-rbl = 45;
+rrl = 130;
+rrh = 180;
+rgl = 35;
+rgh = 65;
+rbl = 70;
 rbh = 110;
-grl = 20;
-grh = 85;
-ggl = 55;
-ggh = 115;
-gbl = 35;
-gbh = 95;
-yrl = 120;
-yrh = 185;
-ygl = 115;
-ygh = 175;
-ybl = 30;
+grl = 45;
+grh = 80;
+ggl = 80;
+ggh = 125;
+gbl = 60;
+gbh = 100;
+yrl = 150;
+yrh = 210;
+ygl = 160;
+ygh = 210;
+ybl = 60;
 ybh = 100;
-brl = 35;
-brh = 95;
-bgl = 60;
-bgh = 120;
-bbl = 95;
-bbh = 160;
+brl = 50;
+brh = 90;
+bgl = 95;
+bgh = 140;
+bbl = 130;
+bbh = 180;
 
 %Take image of current board...
 vid = videoinput('winvideo', 1, 'MJPG_640x480');
@@ -59,17 +59,17 @@ se = strel('square', 5);
 r_ero = imdilate(result,se);
 r_fin = imerode(r_ero,se);
 %image(r_fin);
-[centers,radii] = imfindcircles(r_fin,[10,30],'Sensitivity', 0.94)
+[centers,radii] = imfindcircles(r_fin,[10,30],'Sensitivity', 0.94);
 size = length(radii);
 i = 1;
 
 while i <= size 
-    if centers(i,1) >= 190 && centers(i,1) <= 215 && centers(i,2) >=35 && centers(i,2) <= 70
+    if centers(i,1) >= 160 && centers(i,1) <= 220 && centers(i,2) >=35 && centers(i,2) <= 95
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(10) = 1; % Red
         end
@@ -82,12 +82,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(10) = 4; % Blue
         end
-    elseif centers(i,1) >= 155 && centers(i,1) <= 185 && centers(i,2) >= 145 && centers(i,2) <= 180
+    elseif centers(i,1) >= 135 && centers(i,1) <= 195 && centers(i,2) >= 138 && centers(i,2) <= 198
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(9) = 1; % Red
         end
@@ -100,12 +100,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(9) = 4; % Blue
         end
-    elseif centers(i,1) >= 65 && centers(i,1) <= 100 && centers(i,2) >= 220 && centers(i,2) <= 255
+    elseif centers(i,1) >= 50 && centers(i,1) <= 110 && centers(i,2) >= 225 && centers(i,2) <= 285
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(8) = 1; % Red
         end
@@ -118,12 +118,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(8) = 4; % Blue
         end
-    elseif centers(i,1) >= 150 && centers(i,1) <= 180 && centers(i,2) >= 305 && centers(i,2) <= 335
+    elseif centers(i,1) >= 130 && centers(i,1) <= 190 && centers(i,2) >= 300 && centers(i,2) <= 360
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(7) = 1; % Red
         end
@@ -136,12 +136,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(7) = 4; % Blue
         end
-    elseif centers(i,1) >= 190 && centers(i,1) <= 230 && centers(i,2) >= 410 && centers(i,2) <= 450
+    elseif centers(i,1) >= 180 && centers(i,1) <= 240 && centers(i,2) >= 410 && centers(i,2) <= 480
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(6) = 1; % Red
         end
@@ -154,12 +154,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(6) = 4; % Blue
         end
-    elseif centers(i,1) >= 315 && centers(i,1) <= 345 && centers(i,2) >= 80 && centers(i,2) <= 105
+    elseif centers(i,1) >= 300 && centers(i,1) <= 360 && centers(i,2) >= 75 && centers(i,2) <= 135
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(1) = 1; % Red
         end
@@ -172,12 +172,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(1) = 4; % Blue
         end
-    elseif centers(i,1) >= 425 && centers(i,1) <= 455 && centers(i,2) >= 75 && centers(i,2) <= 105
+    elseif centers(i,1) >= 406 && centers(i,1) <= 466 && centers(i,2) >= 68 && centers(i,2) <= 128
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(2) = 1; % Red
         end
@@ -190,12 +190,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(2) = 4; % Blue
         end
-    elseif centers(i,1) >= 425 && centers(i,1) <= 460 && centers(i,2) >= 225 && centers(i,2) <= 255
+    elseif centers(i,1) >= 416 && centers(i,1) <= 476 && centers(i,2) >= 214 && centers(i,2) <= 274
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(3) = 1; % Red
         end
@@ -208,12 +208,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(3) = 4; % Blue
         end
-    elseif centers(i,1) >= 420 && centers(i,1) <= 460 && centers(i,2) >= 375 && centers(i,2) <= 405
+    elseif centers(i,1) >= 420 && centers(i,1) <= 480 && centers(i,2) >= 360 && centers(i,2) <= 420
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(4) = 1; % Red
         end
@@ -226,12 +226,12 @@ while i <= size
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(4) = 4; % Blue
         end
-    elseif centers(i,1) >= 320 && centers(i,1) <= 350 && centers(i,2) >= 365 && centers(i,2) <= 400
+    elseif centers(i,1) >= 300 && centers(i,1) <= 370 && centers(i,2) >= 365 && centers(i,2) <= 430
         x = round(centers(i,1));
         y = round(centers(i,2));
-        r = (cur_img(y-1,x-1,1) + cur_img(y,x-1,1) + cur_img(y+1,x-1,1) + cur_img(y-1,x,1) + cur_img(y,x,1) + cur_img(y+1,x,1) + cur_img(y-1,x+1,1) + cur_img(y,x+1,1) + cur_img(y+1,x+1,1)) / 9;
-        g = (cur_img(y-1,x-1,2) + cur_img(y,x-1,2) + cur_img(y+1,x-1,2) + cur_img(y-1,x,2) + cur_img(y,x,2) + cur_img(y+1,x,2) + cur_img(y-1,x+1,2) + cur_img(y,x+1,2) + cur_img(y+1,x+1,2)) / 9;
-        b = (cur_img(y-1,x-1,3) + cur_img(y,x-1,3) + cur_img(y+1,x-1,3) + cur_img(y-1,x,3) + cur_img(y,x,3) + cur_img(y+1,x,3) + cur_img(y-1,x+1,3) + cur_img(y,x+1,3) + cur_img(y+1,x+1,3)) / 9;
+        r = cur_img(y,x,1);
+        g = cur_img(y,x,2);
+        b = cur_img(y,x,3);
         if r >= rrl && r <= rrh && g >= rgl && g <= rgh && b >= rbl && b <= rbh
             game.Colors(5) = 1; % Red
         end
