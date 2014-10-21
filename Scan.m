@@ -78,7 +78,7 @@ while i <= size
             game.Colors(1) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(1) = 3;
+            game.Colors(1) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(1) = 4; % Blue
@@ -96,7 +96,7 @@ while i <= size
             game.Colors(2) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(2) = 3;
+            game.Colors(2) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(2) = 4; % Blue
@@ -114,7 +114,7 @@ while i <= size
             game.Colors(3) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(3) = 3;
+            game.Colors(3) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(3) = 4; % Blue
@@ -132,7 +132,7 @@ while i <= size
             game.Colors(4) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(4) = 3;
+            game.Colors(4) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(4) = 4; % Blue
@@ -150,7 +150,7 @@ while i <= size
             game.Colors(5) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(5) = 3;
+            game.Colors(5) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(5) = 4; % Blue
@@ -168,7 +168,7 @@ while i <= size
             game.Colors(6) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(6) = 3;
+            game.Colors(6) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(6) = 4; % Blue
@@ -186,7 +186,7 @@ while i <= size
             game.Colors(7) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(7) = 3;
+            game.Colors(7) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(7) = 4; % Blue
@@ -204,7 +204,7 @@ while i <= size
             game.Colors(8) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(8) = 3;
+            game.Colors(8) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(8) = 4; % Blue
@@ -222,7 +222,7 @@ while i <= size
             game.Colors(9) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(9) = 3;
+            game.Colors(9) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(9) = 4; % Blue
@@ -240,7 +240,7 @@ while i <= size
             game.Colors(10) = 2; % Green
         end
         if r >= yrl && r <= yrh && g >= ygl && g <= ygh && b >= ybl && b <= ybh
-            game.Colors(10) = 3;
+            game.Colors(10) = 3; % Yellow
         end
         if r >= brl && r <= brh && g >= bgl && g <= bgh && b >= bbl && b <= bbh
             game.Colors(10) = 4; % Blue
