@@ -1,5 +1,4 @@
 game.Locations=[15, 45, 90, 135, 165, -155, -120, -90, -60, -25];
-%Need to get actual measurements tomorrow morning...
 game.Colors=[0,0,0,0,0,0,0,0,0,0];
 game.key={'0', 'Empty'; '1', 'Red'; '2', 'Green'; '3', 'Yellow'; '4', 'Blue'};
 
