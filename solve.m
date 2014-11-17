@@ -24,8 +24,8 @@ for i = 1:10
     if moves(i) == 1
         for j = 1:10
             if goal.Colors(j*2-1) == 'R' && moves(j) == 0 && l == 0
-                instructions(k,1) = i;
-                instructions(k,2) = j;
+                instructions(k,1) = game.Locations(i);
+                instructions(k,2) = game.Locations(j);
                 l = 1;
                 break;
             end
@@ -40,8 +40,8 @@ for i = 1:10
     if moves(i) == 2
         for j = 1:10
             if goal.Colors(j*2-1) == 'G' && moves(j) == 0 && l == 0
-                instructions(k,1) = i;
-                instructions(k,2) = j;
+                instructions(k,1) = game.Locations(i);
+                instructions(k,2) = game.Locations(j);
                 l = 1;
                 break;
             end
@@ -56,8 +56,8 @@ for i = 1:10
     if moves(i) == 4
         for j = 1:10
             if goal.Colors(j*2-1) == 'B' && moves(j) == 0 && l == 0
-                instructions(k,1) = i;
-                instructions(k,2) = j;
+                instructions(k,1) = game.Locations(i);
+                instructions(k,2) = game.Locations(j);
                 l = 1;
                 break;
             end
@@ -91,20 +91,13 @@ for i = 1:10
                    break;
                end
            end
-           instructions(k,1) = a;
-           instructions(k,2) = x;
+           instructions(k,1) = game.Locations(a);
+           instructions(k,2) = game.Locations(x);
            moves(x) = moves(a);
            moves(a) = 0;
            k = k + 1;
            b = 1;
        end
     end
-end
-    
-end
-for i = 1:k-1
-    b = instructions(i,1);
-    instructions(i,1) = game.Locations(b);
-    b = instructions(i,2);
-    instructions(i,2) = game.Locations(b);
+end 
 end
