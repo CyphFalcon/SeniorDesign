@@ -1,3 +1,4 @@
+function game = Scan()
 game.Locations=[15, 45, 90, 135, 165, -155, -120, -90, -60, -25];
 game.Colors=[0,0,0,0,0,0,0,0,0,0];
 game.key={'0', 'Empty'; '1', 'Red'; '2', 'Green'; '3', 'Yellow'; '4', 'Blue'};
@@ -15,7 +16,7 @@ grh = 70;
 ggl = 45;
 ggh = 80;
 gbl = 48;
-gbh = 90;
+gbh = 85;
 %Did not update this block (no yellow check...)
 yrl = 150;
 yrh = 210;
@@ -28,7 +29,7 @@ brl = 35;
 brh = 88;
 bgl = 48;
 bgh = 100;
-bbl = 92;
+bbl = 90;
 bbh = 135;
 
 %Take image of current board...
@@ -62,7 +63,7 @@ se = strel('square', 5);
 r_ero = imdilate(result,se);
 r_fin = imerode(r_ero,se);
 %image(r_fin);
-[centers,radii] = imfindcircles(r_fin,[10,30],'Sensitivity', 0.94);
+[centers,radii] = imfindcircles(r_fin,[15,35],'Sensitivity', 0.95);
 size = length(radii);
 i = 1;
 
@@ -93,17 +94,17 @@ while i <= size
         y = round(centers(i,2));
         filter2;
         game.Colors(6) = valu;
-    elseif centers(i,1) >= 300 && centers(i,1) <= 360 && centers(i,2) >= 75 && centers(i,2) <= 135
+    elseif centers(i,1) >= 300 && centers(i,1) <= 360 && centers(i,2) >= 60 && centers(i,2) <= 135
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(1) = valu;
-    elseif centers(i,1) >= 406 && centers(i,1) <= 466 && centers(i,2) >= 68 && centers(i,2) <= 128
+    elseif centers(i,1) >= 406 && centers(i,1) <= 466 && centers(i,2) >= 50 && centers(i,2) <= 128
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(2) = valu;
-    elseif centers(i,1) >= 416 && centers(i,1) <= 476 && centers(i,2) >= 210 && centers(i,2) <= 274
+    elseif centers(i,1) >= 416 && centers(i,1) <= 476 && centers(i,2) >= 190 && centers(i,2) <= 274
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
@@ -119,7 +120,7 @@ while i <= size
         filter2;
         game.Colors(5) = valu;
     else
-        fprintf('Something unidentified at %d,%d\n',centers(i,1),centers(i,2));
+        %fprintf('Something unidentified at %d,%d\n',centers(i,1),centers(i,2));
     end
     i = i + 1;
 end
