@@ -5,7 +5,7 @@ set(vid,'TriggerRepeat',Inf);
    start(vid);
    data = getdata(vid,1);
    img = data(:,:,:,1);
-   image(img);
+   %image(img);
    stop(vid);
    
 imwrite(img,'previous.png');
