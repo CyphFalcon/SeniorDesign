@@ -1,3 +1,4 @@
+function goal = verify(game)
 s = warning('off','MATLAB:javaclasspath:jarAlreadySpecified');
 javaaddpath('C:\Program Files (x86)\ZXing\core\core.jar');
 javaaddpath('C:\Program Files (x86)\ZXing\javase\javase.jar');
@@ -55,7 +56,7 @@ if r_present < r_needed || b_present < b_needed || g_present < g_needed
 end
 
 if r_present > r_needed || b_present > b_needed || g_present > b_needed
-    fprintf('There''s plenty here to work with!\n');
+    error('There''s plenty here to work with! By which I mean, you''ve got too many washers.');
 end
 
 if check == (b_needed + g_needed + r_needed)
