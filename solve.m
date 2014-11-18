@@ -1,3 +1,4 @@
+function instructions = solve(goal, game)
 moves = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
 for i = 1:10
     if goal.Colors(i*2-1) == 'R' && game.Colors(i) == 1
@@ -12,8 +13,7 @@ for i = 1:10
         moves(i) = game.Colors(i);
     end
 end
-% Make free moves first (current implementation may hang if all target
-% spots are occupied.
+
 b = 1;
 stuck = 0;
 k = 1;
@@ -80,7 +80,7 @@ for i = 1:10
            end
        end
        if x == 15
-           %This implies no easy move, shift puzzle
+           %This implies no obvious move, shift puzzle
            for a = 1:10 
                if moves(a) ~= 7 && moves(1) ~= 0 && (goal.Colors(a) == 'R' || goal.Colors(a) == 'G' || goal.Colors(a) == 'B')
                    break
