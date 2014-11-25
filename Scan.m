@@ -69,58 +69,79 @@ i = 1;
 
 while i <= size 
     offset = round(radii(i)*3/4);
-    if centers(i,1) >= 160 && centers(i,1) <= 220 && centers(i,2) >=30 && centers(i,2) <= 95
+    %x1 = 210;
+    %x2 = 285;
+    %y1 = 45;
+    %y2 = 115;
+    %cur_img(x1,y1,1) = 255;
+    %cur_img(x1,y2,1) = 255;
+    %cur_img(x2,y1,1) = 255;
+    %cur_img(x2,y2,1) = 255;
+    %for j = 0:10
+    %    cur_img(x1+j,y1,1) = 255;
+    %    cur_img(x1+j,y2,1) = 255;
+    %    cur_img(x2-j,y1,1) = 255;
+    %    cur_img(x2-j,y2,1) = 255;
+    
+    %    cur_img(x1,y1-j,1) = 255;
+    %    cur_img(x1,y2-j,1) = 255;
+    %    cur_img(x2,y1+j,1) = 255;
+    %    cur_img(x2,y2+j,1) = 255;
+    %end
+    
+    image(cur_img);
+    if centers(i,2) >= 5 && centers(i,2) <= 85 && centers(i,1) >= 170 && centers(i,1) <= 260
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(10) = valu;
-    elseif centers(i,1) >= 135 && centers(i,1) <= 195 && centers(i,2) >= 138 && centers(i,2) <= 198
+    elseif centers(i,2) >= 130 && centers(i,2) <= 190 && centers(i,1) >= 163 && centers(i,1) <= 223
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(9) = valu;
-    elseif centers(i,1) >= 50 && centers(i,1) <= 110 && centers(i,2) >= 225 && centers(i,2) <= 285
+    elseif centers(i,2) >= 210 && centers(i,2) <= 285 && centers(i,1) >= 45 && centers(i,1) <= 115
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(8) = valu;
-    elseif centers(i,1) >= 130 && centers(i,1) <= 190 && centers(i,2) >= 300 && centers(i,2) <= 360
+    elseif centers(i,2) >= 300 && centers(i,2) <= 360 && centers(i,1) >= 150 && centers(i,1) <= 210
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(7) = valu;
-    elseif centers(i,1) >= 180 && centers(i,1) <= 240 && centers(i,2) >= 410 && centers(i,2) <= 480
+    elseif centers(i,2) >= 420 && centers(i,2) <= 480 && centers(i,1) >= 190 && centers(i,1) <= 260
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(6) = valu;
-    elseif centers(i,1) >= 300 && centers(i,1) <= 360 && centers(i,2) >= 60 && centers(i,2) <= 135
+    elseif centers(i,2) >= 40 && centers(i,2) <= 105 && centers(i,1) >= 320 && centers(i,1) <= 390
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(1) = valu;
-    elseif centers(i,1) >= 406 && centers(i,1) <= 466 && centers(i,2) >= 50 && centers(i,2) <= 128
+    elseif centers(i,2) >= 30 && centers(i,2) <= 95 && centers(i,1) >= 440 && centers(i,1) <= 510
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(2) = valu;
-    elseif centers(i,1) >= 416 && centers(i,1) <= 476 && centers(i,2) >= 190 && centers(i,2) <= 274
+    elseif centers(i,2) >= 190 && centers(i,2) <= 260 && centers(i,1) >= 455 && centers(i,1) <= 520
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(3) = valu;
-    elseif centers(i,1) >= 420 && centers(i,1) <= 480 && centers(i,2) >= 355 && centers(i,2) <= 420
+    elseif centers(i,2) >= 360 && centers(i,2) <= 435 && centers(i,1) >= 465 && centers(i,1) <= 530
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(4) = valu;
-    elseif centers(i,1) >= 300 && centers(i,1) <= 370 && centers(i,2) >= 355 && centers(i,2) <= 430
+    elseif centers(i,2) >= 360 && centers(i,2) <= 435 && centers(i,1) >= 335 && centers(i,1) <= 400
         x = round(centers(i,1));
         y = round(centers(i,2));
         filter2;
         game.Colors(5) = valu;
     else
-        %fprintf('Something unidentified at %d,%d\n',centers(i,1),centers(i,2));
+        fprintf('Something unidentified at %d,%d\n',centers(i,1),centers(i,2));
     end
     i = i + 1;
 end
