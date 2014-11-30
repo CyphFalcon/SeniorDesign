@@ -14,18 +14,18 @@ g_present = 0;
 r_needed = 0;
 b_needed = 0;
 g_needed = 0;
-for i = 1:10
-    if game.Colors(i) == 1
-        r_present = r_present + 1;
-    end
-    if game.Colors(i) == 2
-        g_present = g_present + 1;
-    end
-    if game.Colors(i) == 4
-        b_present = b_present + 1;
-    end
 
-end
+%for i = 1:10
+%    if game.Colors(i) == 1
+%        r_present = r_present + 1;
+%    end
+%    if game.Colors(i) == 2
+%        g_present = g_present + 1;
+%    end
+%    if game.Colors(i) == 4
+%        b_present = b_present + 1;
+%    end
+%end
 for i = 1:10
     if goal.Colors(i*2-1) == 'R'
         r_needed = r_needed + 1;
@@ -38,18 +38,28 @@ for i = 1:10
     end
 end
 check = 0;
-for i = 1:10
-    if goal.Colors(i*2-1) == 'R' && game.Colors(i) == 1
-        check = check + 1;
-    end
-    if goal.Colors(i*2-1) == 'B' && game.Colors(i) == 4
-        check = check + 1;
-    end
-    if goal.Colors(i*2-1) == 'G' && game.Colors(i) == 2
-        check = check + 1;
-    end
-end
-
+%for i = 1:10
+%    if goal.Colors(i*2-1) == 'R' && game.Colors(i) == 1
+%        check = check + 1;
+%    end
+%    if goal.Colors(i*2-1) == 'B' && game.Colors(i) == 4
+%        check = check + 1;
+%    end
+%    if goal.Colors(i*2-1) == 'G' && game.Colors(i) == 2
+%        check = check + 1;
+%    end
+%end
+store = goal.Colors;
+goal.Colors(1) = store(19);
+goal.Colors(3) = store(17);
+goal.Colors(5) = store(15);
+goal.Colors(7) = store(13);
+goal.Colors(9) = store(11);
+goal.Colors(11) = store(9);
+goal.Colors(13) = store(7);
+goal.Colors(15) = store(5);
+goal.Colors(17) = store(3);
+goal.Colors(19) = store(1);
 %fprintf('Debug: %d, %d, %d vs %d, %d, %d\n',r_present,g_present,b_present,r_needed,g_needed,b_needed);
 if r_present < r_needed || b_present < b_needed || g_present < g_needed
     error('The desired configuration cannot be obtained: washers present do not match specifications.');
